@@ -58,11 +58,26 @@
                     <span>JAVA</span>
                 </div>
                 <h3>Certificações</h3>
-                <ul class="clean-list certifications-list">
-                    <li>Microsoft Certified: Azure Data Fundamentals DP900</li>
-                    <li>Microsoft Certified: Azure AI Fundamentals AZ900</li>
-                    <li>Scrum Foundation Professional Certification - SFPC™ Certiprof</li>
-                </ul>
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <button class="accordion-header">Microsoft Certified: Azure Data Fundamentals DP900 <span class="accordion-icon">&#9660;</span></button>
+                        <div class="accordion-content">
+                            <p>Certificação fundamental em dados do Azure, cobrindo conceitos básicos de dados e serviços de dados no Microsoft Azure.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Microsoft Certified: Azure AI Fundamentals AZ900 <span class="accordion-icon">&#9660;</span></button>
+                        <div class="accordion-content">
+                            <p>Certificação fundamental em IA do Azure, abordando conceitos básicos de inteligência artificial e aprendizado de máquina no Azure.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Scrum Foundation Professional Certification - SFPC™ Certiprof <span class="accordion-icon">&#9660;</span></button>
+                        <div class="accordion-content">
+                            <p>Certificação profissional em Scrum, validando o conhecimento dos princípios e práticas do framework Scrum para gerenciamento ágil de projetos.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -98,11 +113,26 @@
                     <p>Desenvolvimento de Software e Multiplataforma - Cursando</p>
                 </div>
                 <h3>Cursos Complementares</h3>
-                <ul class="clean-list courses-list">
-                    <li>CAMP Pinheiros – Formação para cidadania (Duração: 3 meses, 260 horas) – Concluído</li>
-                    <li>Senai Ary Torres – Informática Básica (Duração: 3 meses, 80 horas) – Concluído</li>
-                    <li>SENAI Ary Torres – Redes de Computadores - Implantação de Redes Locais (Duração: 1 mês, 48 horas) – Concluído</li>
-                </ul>
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <button class="accordion-header">CAMP Pinheiros – Formação para cidadania <span class="accordion-icon">&#9660;</span></button>
+                        <div class="accordion-content">
+                            <p>Duração: 3 meses (260 horas) – Concluído. Foco em desenvolvimento pessoal e social.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Senai Ary Torres – Informática Básica <span class="accordion-icon">&#9660;</span></button>
+                        <div class="accordion-content">
+                            <p>Duração: 3 meses (80 horas) – Concluído. Conceitos fundamentais de computação.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">SENAI Ary Torres – Redes de Computadores - Implantação de Redes Locais <span class="accordion-icon">&#9660;</span></button>
+                        <div class="accordion-content">
+                            <p>Duração: 1 mês (48 horas) – Concluído. Noções práticas de instalação e configuração de redes.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -114,30 +144,6 @@
             <div class="contact-info">
                 <p>Email: <a href="mailto:alexsandrodejesus220@gmail.com">alexsandrodejesus220@gmail.com</a></p>
                 <p>GitHub: <a href="https://github.com/BIGODEMT" target="_blank">BIGODEMT</a></p>
-            </div>
-
-            <div class="contact-form-container">
-                <h3>Envie uma Mensagem</h3>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Nome:</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Assunto:</label>
-                        <input type="text" id="subject" name="subject">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mensagem:</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn send-message-btn">Enviar Mensagem</button>
-                    <p id="formStatusMessage" class="form-status-message"></p>
-                </form>
             </div>
         </div>
     </footer>
@@ -164,22 +170,26 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            const contactForm = document.getElementById('contactForm');
-            const formStatusMessage = document.getElementById('formStatusMessage');
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionItem = header.closest('.accordion-item');
+                    const accordionContent = accordionItem.querySelector('.accordion-content');
 
-            if (contactForm && formStatusMessage) {
-                contactForm.addEventListener('submit', function(event) {
-                    event.preventDefault();
+                    document.querySelectorAll('.accordion-item.active').forEach(item => {
+                        if (item !== accordionItem) {
+                            item.classList.remove('active');
+                            item.querySelector('.accordion-content').style.maxHeight = null;
+                        }
+                    });
 
-                    formStatusMessage.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
-                    formStatusMessage.style.color = '#27ae60';
-                    contactForm.reset();
-
-                    setTimeout(() => {
-                        formStatusMessage.textContent = '';
-                    }, 5000);
+                    accordionItem.classList.toggle('active');
+                    if (accordionItem.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                    } else {
+                        accordionContent.style.maxHeight = null;
+                    }
                 });
-            }
+            });
         });
     </script>
 </body>
