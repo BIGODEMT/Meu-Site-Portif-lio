@@ -17,9 +17,9 @@
     <main>
         <section id="loading" class="loading-overlay">
             <div class="loader">
-                <div class="ball"></div>
-                <div class="ball"></div>
-                <div class="ball"></div>
+                <div class="dot-flash"></div>
+                <div class="dot-flash"></div>
+                <div class="dot-flash"></div>
             </div>
         </section>
 
@@ -27,8 +27,8 @@
             <div class="container">
                 <a href="#resumo" class="nav-btn">Resumo</a>
                 <a href="#habilidades" class="nav-btn">Habilidades</a>
-                <a href="#experiencia" class="nav-btn">Experiência</a>
-                <a href="#formacao" class="nav-btn">Formação</a>
+                <a href="#experiencia" class="nav-btn">Experiencia</a>
+                <a href="#formacao" class="nav-btn">Formacao</a>
                 <a href="#contato" class="nav-btn">Contato</a>
             </div>
         </section>
@@ -58,25 +58,17 @@
                     <span>JAVA</span>
                 </div>
                 <h3>Certificações</h3>
-                <div class="accordion-container">
-                    <div class="accordion-item">
-                        <button class="accordion-header">Microsoft Certified: Azure Data Fundamentals DP900 <span class="accordion-icon">&#9660;</span></button>
-                        <div class="accordion-content">
-                            <p>Certificação fundamental em dados do Azure, cobrindo conceitos básicos de dados e serviços de dados no Microsoft Azure.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">Microsoft Certified: Azure AI Fundamentals AZ900 <span class="accordion-icon">&#9660;</span></button>
-                        <div class="accordion-content">
-                            <p>Certificação fundamental em IA do Azure, abordando conceitos básicos de inteligência artificial e aprendizado de máquina no Azure.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">Scrum Foundation Professional Certification - SFPC™ Certiprof <span class="accordion-icon">&#9660;</span></button>
-                        <div class="accordion-content">
-                            <p>Certificação profissional em Scrum, validando o conhecimento dos princípios e práticas do framework Scrum para gerenciamento ágil de projetos.</p>
-                        </div>
-                    </div>
+                <div class="education-item">
+                    <h3>Microsoft Certified: Azure Data Fundamentals DP900</h3>
+                    <p>Certificação fundamental em dados do Azure, cobrindo conceitos básicos de dados e serviços de dados no Microsoft Azure.</p>
+                </div>
+                <div class="education-item">
+                    <h3>Microsoft Certified: Azure AI Fundamentals AZ900</h3>
+                    <p>Certificação fundamental em IA do Azure, abordando conceitos básicos de inteligência artificial e aprendizado de máquina no Azure.</p>
+                </div>
+                <div class="education-item">
+                    <h3>Scrum Foundation Professional Certification - SFPC™ Certiprof</h3>
+                    <p>Certificação profissional em Scrum, validando o conhecimento dos princípios e práticas do framework Scrum para gerenciamento ágil de projetos.</p>
                 </div>
             </div>
         </section>
@@ -113,25 +105,17 @@
                     <p>Desenvolvimento de Software e Multiplataforma - Cursando</p>
                 </div>
                 <h3>Cursos Complementares</h3>
-                <div class="accordion-container">
-                    <div class="accordion-item">
-                        <button class="accordion-header">CAMP Pinheiros – Formação para cidadania <span class="accordion-icon">&#9660;</span></button>
-                        <div class="accordion-content">
-                            <p>Duração: 3 meses (260 horas) – Concluído. Foco em desenvolvimento pessoal e social.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">Senai Ary Torres – Informática Básica <span class="accordion-icon">&#9660;</span></button>
-                        <div class="accordion-content">
-                            <p>Duração: 3 meses (80 horas) – Concluído. Conceitos fundamentais de computação.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">SENAI Ary Torres – Redes de Computadores - Implantação de Redes Locais <span class="accordion-icon">&#9660;</span></button>
-                        <div class="accordion-content">
-                            <p>Duração: 1 mês (48 horas) – Concluído. Noções práticas de instalação e configuração de redes.</p>
-                        </div>
-                    </div>
+                <div class="education-item">
+                    <h3>CAMP Pinheiros – Formação para cidadania</h3>
+                    <p>Duração: 3 meses, 260 horas – Concluído</p>
+                </div>
+                <div class="education-item">
+                    <h3>Senai Ary Torres – Informática Básica</h3>
+                    <p>Duração: 3 meses, 80 horas – Concluído</p>
+                </div>
+                <div class="education-item">
+                    <h3>SENAI Ary Torres – Redes de Computadores - Implantação de Redes Locais</h3>
+                    <p>Duração: 1 mês, 48 horas – Concluído</p>
                 </div>
             </div>
         </section>
@@ -170,26 +154,6 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.accordion-header').forEach(header => {
-                header.addEventListener('click', () => {
-                    const accordionItem = header.closest('.accordion-item');
-                    const accordionContent = accordionItem.querySelector('.accordion-content');
-
-                    document.querySelectorAll('.accordion-item.active').forEach(item => {
-                        if (item !== accordionItem) {
-                            item.classList.remove('active');
-                            item.querySelector('.accordion-content').style.maxHeight = null;
-                        }
-                    });
-
-                    accordionItem.classList.toggle('active');
-                    if (accordionItem.classList.contains('active')) {
-                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-                    } else {
-                        accordionContent.style.maxHeight = null;
-                    }
-                });
-            });
         });
     </script>
 </body>
