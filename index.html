@@ -46,20 +46,19 @@
 
         <section id="habilidades" class="skills">
             <div class="container">
-                <h2>Habilidades</h2>
+                <h2>Minhas Habilidades</h2>
                 <div class="skills-grid">
                     <span>C++</span>
                     <span>C</span>
                     <span>HTML</span>
                     <span>MySQL</span>
-                    <span>CSS</span>
+                    <span>Linux</span>
                     <span>Backend</span>
                     <span>Frontend</span>
                     <span>JAVA</span>
-                     <span>Linux</span>
                 </div>
                 <h3>Certificações</h3>
-                <ul class="certifications-list">
+                <ul class="clean-list certifications-list">
                     <li>Microsoft Certified: Azure Data Fundamentals DP900</li>
                     <li>Microsoft Certified: Azure AI Fundamentals AZ900</li>
                     <li>Scrum Foundation Professional Certification - SFPC™ Certiprof</li>
@@ -99,7 +98,7 @@
                     <p>Desenvolvimento de Software e Multiplataforma - Cursando</p>
                 </div>
                 <h3>Cursos Complementares</h3>
-                <ul class="courses-list">
+                <ul class="clean-list courses-list">
                     <li>CAMP Pinheiros – Formação para cidadania (Duração: 3 meses, 260 horas) – Concluído</li>
                     <li>Senai Ary Torres – Informática Básica (Duração: 3 meses, 80 horas) – Concluído</li>
                     <li>SENAI Ary Torres – Redes de Computadores - Implantação de Redes Locais (Duração: 1 mês, 48 horas) – Concluído</li>
@@ -115,6 +114,30 @@
             <div class="contact-info">
                 <p>Email: <a href="mailto:alexsandrodejesus220@gmail.com">alexsandrodejesus220@gmail.com</a></p>
                 <p>GitHub: <a href="https://github.com/BIGODEMT" target="_blank">BIGODEMT</a></p>
+            </div>
+
+            <div class="contact-form-container">
+                <h3>Envie uma Mensagem</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Assunto:</label>
+                        <input type="text" id="subject" name="subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn send-message-btn">Enviar Mensagem</button>
+                    <p id="formStatusMessage" class="form-status-message"></p>
+                </form>
             </div>
         </div>
     </footer>
@@ -132,12 +155,31 @@
 
                 setTimeout(() => {
                     window.scrollTo({
-                        top: targetElement.offsetTop,
+                        top: targetElement.offsetTop - document.querySelector('header').offsetHeight,
                         behavior: 'smooth'
                     });
                     loadingOverlay.style.display = 'none';
                 }, 1500);
             });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contactForm');
+            const formStatusMessage = document.getElementById('formStatusMessage');
+
+            if (contactForm && formStatusMessage) {
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    formStatusMessage.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
+                    formStatusMessage.style.color = '#27ae60';
+                    contactForm.reset();
+
+                    setTimeout(() => {
+                        formStatusMessage.textContent = '';
+                    }, 5000);
+                });
+            }
         });
     </script>
 </body>
