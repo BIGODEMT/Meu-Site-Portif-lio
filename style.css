@@ -1,10 +1,10 @@
 :root {
-    --bg-dark: #0a0a0a;
-    --card-bg: rgba(20, 20, 20, 0.8);
-    --border: rgba(255, 255, 255, 0.08);
-    --text-main: #fcfcfc;
-    --text-dim: #888888;
-    --accent-soft: #444444; /* Cinza médio no lugar do azul vibrante */
+    --bg-dark: #020617; /* Azul Marinho Profundo */
+    --card-bg: rgba(15, 23, 42, 0.8); /* Azul ardósia suave para os cards */
+    --border: rgba(148, 163, 184, 0.1); /* Bordas discretas */
+    --text-main: #f1f5f9;
+    --text-dim: #94a3b8;
+    --accent-soft: #334155; /* Azul acinzentado para detalhes */
     --font-main: 'Inter', sans-serif;
 }
 
@@ -12,7 +12,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: default;
     scroll-behavior: smooth;
 }
 
@@ -21,6 +20,7 @@ body {
     color: var(--text-main);
     font-family: var(--font-main);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 #starfall-canvas {
@@ -28,7 +28,7 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
-    opacity: 0.15; /* Bem mais sutil */
+    opacity: 0.2;
 }
 
 .container {
@@ -37,21 +37,28 @@ body {
     padding: 0 24px;
 }
 
-/* Header Minimalista */
 header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    padding: 24px 0;
-    backdrop-filter: blur(10px);
+    padding: 20px 0;
+    backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
+    background: rgba(2, 6, 23, 0.8);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
     font-weight: 700;
     font-size: 1rem;
     letter-spacing: 1px;
+    color: #fff;
 }
 
 .nav-links {
@@ -67,9 +74,7 @@ header {
     transition: color 0.3s;
 }
 
-.nav-links a:hover {
-    color: var(--text-main);
-}
+.nav-links a:hover { color: #fff; }
 
 /* Hero Section */
 .hero {
@@ -80,6 +85,7 @@ header {
 
 .status-badge {
     border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.03);
     padding: 4px 12px;
     border-radius: 4px;
     font-size: 0.7rem;
@@ -90,94 +96,109 @@ header {
 }
 
 h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin-bottom: 20px;
-    color: #fff;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
 }
 
-.glow-text {
-    color: var(--text-dim); /* Removemos o brilho colorido */
-    font-weight: 400;
-}
+.glow-text { color: var(--text-dim); font-weight: 400; }
 
 .hero p {
     font-size: 1.1rem;
     color: var(--text-dim);
-    max-width: 550px;
+    max-width: 500px;
+    margin-bottom: 40px;
 }
 
-/* Cards com Estilo Industrial */
+/* Sections */
+section { padding: 100px 0; }
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
 .glass-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
     padding: 40px;
-    border-radius: 12px; /* Cantos menos arredondados, mais sérios */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-h2 {
-    font-size: 1.5rem;
-    margin-bottom: 32px;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Tags de Habilidades */
+/* Habilidades */
 .skills-grid-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
 }
 
 .skills-grid-tags span {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border);
-    padding: 6px 14px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    color: var(--text-dim);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: var(--text-main);
 }
 
-/* Timeline Limpa */
+/* Timeline */
 .timeline-item {
     border-left: 1px solid var(--accent-soft);
-    padding: 0 0 30px 20px;
+    padding: 0 0 40px 24px;
     position: relative;
 }
 
-.timeline-item h3 { font-size: 1rem; }
-.date { font-size: 0.8rem; color: var(--text-dim); }
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 5px;
+    width: 9px;
+    height: 9px;
+    background: var(--bg-dark);
+    border: 2px solid var(--accent-soft);
+    border-radius: 50%;
+}
 
-/* Botões Sóbrios */
+.timeline-item h3 { font-size: 1.1rem; margin-bottom: 5px; }
+.date { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px; }
+
+/* Buttons */
 .main-btn {
-    background: #fff;
-    color: #000;
-    padding: 12px 24px;
+    background: #f1f5f9;
+    color: #020617;
+    padding: 14px 28px;
     border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
-    transition: opacity 0.3s;
+    display: inline-block;
+    transition: transform 0.2s, opacity 0.2s;
 }
 
 .main-btn:hover {
-    opacity: 0.8;
+    transform: translateY(-2px);
+    opacity: 0.9;
 }
 
 .secondary-btn {
-    color: var(--text-main);
+    color: #fff;
     text-decoration: none;
     margin-left: 20px;
     font-size: 0.9rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--accent-soft);
+    padding-bottom: 4px;
 }
 
 footer {
-    padding: 80px 0;
+    padding: 100px 0;
     text-align: center;
     border-top: 1px solid var(--border);
-    font-size: 0.9rem;
-    color: var(--text-dim);
+    background: rgba(0, 0, 0, 0.1);
 }
